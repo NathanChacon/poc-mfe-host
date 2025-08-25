@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+
+// will work when we setup the REMOTE app MFE
+const ProductsPage = lazy(() => import('products/ProductsPage'));
+const CartPage = lazy(() => import('cart/CartPage'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <nav style={{ display: 'flex', gap: 12, padding: 12 }}>
+        <Link to="/">Home</Link>
+        <Link to="/products">Products</Link>
+        <Link to="/cart">Cart</Link>
+      </nav>
+
+      <Suspense fallback={<p>Loading…</p>}>
+        <Routes>
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
