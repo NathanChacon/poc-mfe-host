@@ -3,9 +3,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
-// will work when we setup the REMOTE app MFE
-const ProductsPage = lazy(() => import('products/ProductsPage'));
-const CartPage = lazy(() => import('cart/CartPage'));
+const ProductsPage = lazy(() => import('light/ProductPage'));
 
 function App() {
   return (
@@ -19,7 +17,6 @@ function App() {
       <Suspense fallback={<p>Loading…</p>}>
         <Routes>
           <Route path="/products" element={<ProductsPage />} />
-          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

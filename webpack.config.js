@@ -66,8 +66,7 @@ module.exports = {
       name: 'host',
       remotes: {
         // alias: 'globalName@url/remoteEntry.js'
-        products: 'products@http://localhost:3001/remoteEntry.js',
-        cart: 'cart@http://localhost:3002/remoteEntry.js'
+        light: 'light@http://localhost:4000/remoteEntry.js',
       },
       shared: {
         react: { singleton: true },
